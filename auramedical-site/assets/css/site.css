@@ -994,6 +994,75 @@ figure.fibre { display: flex; flex-direction: column; }
   .spec-list li { cursor: default; }
 }
 
+
+/* ================= Claims pass: technology up front, limits stated plainly ================= */
+
+/* Hero technology tag (the qualifier always travels with the word "antimicrobial") */
+.tech-tag {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 12px;
+  margin: 0 0 22px; padding: 8px 14px 8px 12px;
+  background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: 6px;
+  box-shadow: 0 8px 20px -16px rgba(20,26,54,.35);
+}
+.tech-tag b {
+  font-family: var(--mono); font-weight: 600; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--navy);
+}
+.tech-tag span { font-size: 14px; color: var(--ink-2); padding-left: 12px; border-left: 1px solid var(--line); }
+.hero-note span { display: inline-block; margin-top: 6px; font-size: 13px; color: #6a717b; }
+
+/* Problem to product bridge: the overlooked layer and its design */
+.bridge {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 80px); align-items: end;
+  border-top: 2px solid var(--navy); padding-top: 32px;
+}
+.bridge-line {
+  margin: 0; font-stretch: 118%; font-weight: 560; letter-spacing: -0.02em; line-height: 1.08;
+  font-size: clamp(28px, 3.3vw, 44px); text-wrap: balance;
+}
+.bridge-line span { color: var(--navy); display: block; }
+.bridge-copy p { margin: 0; font-size: 18px; color: var(--ink-2); max-width: 30em; }
+.bridge-link {
+  display: inline-block; margin-top: 16px; font-weight: 600; color: var(--navy);
+  text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.bridge-link:hover { color: var(--navy-2); }
+
+/* What it does / what it doesn't */
+.scope {
+  margin-top: clamp(56px, 7vw, 88px);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 3vw, 32px);
+}
+.scope-col { border: 1px solid rgba(255,255,255,.16); border-radius: 14px; padding: 24px 26px 14px; }
+.scope-does { background: rgba(255,255,255,.04); }
+.scope-col h3 { font-stretch: 108%; font-size: 19px; font-weight: 600; letter-spacing: -0.005em; margin-bottom: 8px; }
+.scope-col ul { list-style: none; margin: 0; padding: 0; }
+.scope-col li {
+  position: relative; padding: 12px 0 12px 30px; font-size: 15.5px; line-height: 1.45;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.scope-col li:first-child { border-top: 0; }
+.scope-does li { color: var(--on-dark); }
+.scope-doesnt li { color: var(--on-dark-2); }
+.scope-col li::before { content: ""; position: absolute; left: 2px; top: 17px; }
+.scope-does li::before {
+  width: 12px; height: 7px; border-left: 2px solid #d9dde3; border-bottom: 2px solid #d9dde3; transform: rotate(-45deg);
+}
+.scope-doesnt li::before {
+  width: 12px; height: 12px; top: 16px;
+  background:
+    linear-gradient(45deg, transparent 44%, #a9b0c4 44% 56%, transparent 56%),
+    linear-gradient(-45deg, transparent 44%, #a9b0c4 44% 56%, transparent 56%);
+}
+
+@media (max-width: 920px) {
+  .bridge { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .scope { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .tech-tag span { padding-left: 0; border-left: 0; flex-basis: 100%; }
+  .scope-col { padding: 20px 18px 10px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
