@@ -22,6 +22,7 @@
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="e2014c6b-49ff-440a-b3d0-a1576a62c8c2"></script>
   <script>document.documentElement.classList.add("js");</script>
   <script type="application/ld+json">
   {
@@ -74,7 +75,7 @@
         <li><a href="#story">Our story</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a class="btn btn-primary nav-cta" href="#early-access">Request early access</a>
+      <a class="btn btn-primary nav-cta" href="#early-access" data-umami-event="Early access click" data-umami-event-location="nav">Request early access</a>
       <button class="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false">
         <span></span><span class="visually-hidden">Menu</span>
       </button>
@@ -90,8 +91,8 @@
           <h1 class="display" id="hero-title">The jacket over your scrubs, rebuilt from the fibre&nbsp;up.</h1>
           <p class="lede">SilverCore<span class="tm">™</span> is a full-zip mid-layer for healthcare professionals. Ionic+<span class="tm">™</span> silver is extruded into the yarn itself to inhibit odour-causing bacteria on the fabric, and every detail is cut around clinical work.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#early-access">Request early access</a>
-            <a class="btn btn-quiet" href="#technology">How the fibre works</a>
+            <a class="btn btn-primary" href="#early-access" data-umami-event="Early access click" data-umami-event-location="hero">Request early access</a>
+            <a class="btn btn-quiet" href="#technology" data-umami-event="How the fibre works click">How the fibre works</a>
           </div>
           <p class="hero-note">Now in prototyping. Early-access members hear first and get first call to wear-test.</p>
         </div>
@@ -172,8 +173,8 @@
           <div class="evidence-close">
             <p>Whether uniform contamination leads to patient infections is still being studied. Where your mid-layer has been isn't.</p>
             <ol class="sources">
-              <li id="source-1">1. Wiener-Well Y, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/21864762/" rel="noopener" target="_blank">Nursing and physician attire as possible source of nosocomial infections.</a> Am J Infect Control, 2011.</li>
-              <li id="source-2">2. Damonti L, et al. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12722543/" rel="noopener" target="_blank">Bacterial contamination of healthcare workers' attire.</a> Antimicrob Steward Healthc Epidemiol, 2025.</li>
+              <li id="source-1">1. Wiener-Well Y, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/21864762/" rel="noopener" target="_blank" data-umami-event="Source click" data-umami-event-source="Wiener-Well 2011">Nursing and physician attire as possible source of nosocomial infections.</a> Am J Infect Control, 2011.</li>
+              <li id="source-2">2. Damonti L, et al. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12722543/" rel="noopener" target="_blank" data-umami-event="Source click" data-umami-event-source="Damonti 2025">Bacterial contamination of healthcare workers' attire.</a> Antimicrob Steward Healthc Epidemiol, 2025.</li>
             </ol>
           </div>
         </div>
@@ -721,7 +722,7 @@
           <li><a href="/privacy.html">Privacy</a></li>
         </ul>
         <div class="footer-contact">
-          <a href="mailto:hello@auramedical.ca">hello@auramedical.ca</a>
+          <a href="mailto:hello@auramedical.ca" data-umami-event="Email click">hello@auramedical.ca</a>
         </div>
       </div>
       <div class="footer-legal">
@@ -733,5 +734,59 @@
   </footer>
 
   <script src="/assets/js/site.js" defer></script>
+  <script>
+  /* Umami analytics events (cookieless). Names show up under Events in Umami. */
+  (function () {
+    const track = (name, data) => { try { if (window.umami) window.umami.track(name, data); } catch (e) {} };
+    const once = new Set();
+    const trackOnce = (key, name, data) => { if (once.has(key)) return; once.add(key); track(name, data); };
+
+    // Which sections people actually reach
+    const sections = { problem: "The problem", technology: "Technology", silvercore: "SilverCore tech sheet", story: "Founder story", "early-access": "Early access form", faq: "FAQ" };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { trackOnce("s-" + e.target.id, "Section viewed", { section: sections[e.target.id] }); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.35 });
+      Object.keys(sections).forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+    }
+
+    // Wash-count slider
+    const range = document.getElementById("wash-range");
+    if (range) {
+      range.addEventListener("input", () => trackOnce("slider", "Wash slider used"));
+      range.addEventListener("change", () => { if (Number(range.value) >= 100) trackOnce("slider-100", "Wash slider to 100"); });
+    }
+
+    // Tech sheet: which features people explore
+    document.querySelectorAll(".co, .spec-list li").forEach((el) => {
+      const name = el.classList.contains("co") ? (el.getAttribute("aria-label") || "").replace(/^\d+:\s*/, "") : (el.querySelector("h3") || {}).textContent;
+      const fire = () => trackOnce("f-" + name, "Feature explored", { feature: name });
+      el.addEventListener("mouseenter", fire); el.addEventListener("click", fire); el.addEventListener("focus", fire);
+    });
+
+    // FAQ opens
+    document.querySelectorAll(".faq details").forEach((d) => {
+      d.addEventListener("toggle", () => { if (d.open) trackOnce("q-" + d.querySelector("summary").textContent, "FAQ opened", { question: d.querySelector("summary").textContent }); });
+    });
+
+    // Signup funnel: started, blocked by validation, completed (no names or emails are sent)
+    const form = document.getElementById("access-form");
+    const panel = document.querySelector(".form-panel");
+    if (form && panel) {
+      form.addEventListener("focusin", () => trackOnce("start", "Signup started"));
+      const err = document.getElementById("form-error");
+      if (err) new MutationObserver(() => { if (err.textContent) track("Signup error", { message: err.textContent.slice(0, 60) }); }).observe(err, { childList: true });
+      new MutationObserver(() => {
+        if (panel.classList.contains("is-done")) trackOnce("done", "Signup completed", {
+          role: form.querySelector("#f-role").value,
+          setting: form.querySelector("#f-setting").value,
+          province: form.querySelector("#f-province").value
+        });
+      }).observe(panel, { attributes: true, attributeFilter: ["class"] });
+    }
+  })();
+  </script>
 </body>
 </html>
