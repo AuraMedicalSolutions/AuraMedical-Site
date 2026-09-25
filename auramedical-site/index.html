@@ -260,7 +260,7 @@
 <circle class="ag ag-surface" data-life="25" cx="236.2" cy="110.8" r="2.8"/>
 <circle class="ag ag-surface" data-life="36" cx="238.7" cy="122.1" r="3.2"/>
                 </svg>
-                <figcaption>Surface finish<small>Silver sits on the outside</small></figcaption>
+                <figcaption>Surface finish<small>Silver sits on the outside</small><span class="fibre-meter"><span class="fibre-meter-bar"><i id="meter-coated-bar"></i></span><span id="meter-coated">100% silver left</span></span></figcaption>
               </figure>
               <figure class="fibre">
                 <svg viewBox="0 0 260 260" role="img" aria-label="Cross-section of a fibre with silver distributed all the way through it">
@@ -386,7 +386,7 @@
 <circle class="ag" cx="86.2" cy="161.9" r="2.8"/>
 <circle class="ag" cx="128.9" cy="130.9" r="2.7"/>
                 </svg>
-                <figcaption>Ionic+™ extruded fibre<small>Silver runs all the way through</small></figcaption>
+                <figcaption>Ionic+™ extruded fibre<small>Silver runs all the way through</small><span class="fibre-meter is-steady"><span class="fibre-meter-bar"><i style="width:100%"></i></span><span>100% silver left</span></span></figcaption>
               </figure>
             </div>
             <div class="wash">
@@ -441,82 +441,91 @@
             <div><dt>Status</dt><dd>Prototype</dd></div>
           </dl>
 
-          <div class="flats" id="flats">
-            <figure class="flat">
-              <svg viewBox="0 0 640 580" role="group" aria-label="Front technical flat of the SilverCore Full-Zip Jacket with numbered callouts">
-<path class="f-body" d="M292 104 Q320 92 348 104 L354 156 Q380 160 404 170 Q467.3 276.2 520 388 L533.4 419.4 L501.6 435.6 L483 407 L394 238 L388 470 Q320 476 252 470 L246 238 L157 407 L138.4 435.6 L106.6 419.4 L120 388 Q172.7 276.2 236 170 Q260 160 286 156 Z"/>
-<path class="f-panel" d="M286 156 Q260 160 236 170 Q223.5 190.9 211.5 212 L428.5 212 Q416.5 190.9 404 170 Q380 160 354 156 Q320 166 286 156 Z"/>
-<path class="f-panel" d="M165.7 296 L204.6 316.7 L157 407 L120 388 Q141.9 341.5 165.7 296 Z"/>
-<path class="f-panel" d="M474.3 296 L435.4 316.7 L483 407 L520 388 Q498.1 341.5 474.3 296 Z"/>
-<path class="f-cuff" d="M120 388 L157 407 L138.4 435.6 L106.6 419.4 Z"/>
-<path class="f-cuff" d="M520 388 L483 407 L501.6 435.6 L533.4 419.4 Z"/>
-<path class="f-rib" d="M124.1 390.1 L110.1 421.2 M128.2 392.2 L113.7 423 M132.3 394.3 L117.2 424.8 M136.4 396.4 L120.7 426.6 M140.6 398.6 L124.3 428.4 M144.7 400.7 L127.8 430.2 M148.8 402.8 L131.3 432 M152.9 404.9 L134.9 433.8 M515.9 390.1 L529.9 421.2 M511.8 392.2 L526.3 423 M507.7 394.3 L522.8 424.8 M503.6 396.4 L519.3 426.6 M499.4 398.6 L515.7 428.4 M495.3 400.7 L512.2 430.2 M491.2 402.8 L508.7 432 M487.1 404.9 L505.1 433.8"/>
-<path class="f-inside" d="M292 104 Q320 92 348 104 Q320 116 292 104 Z"/>
-<path class="f-seam" d="M286 156 Q320 166 354 156"/>
-<path class="f-stitch" d="M289 150 Q320 159 351 150"/>
-<path class="f-seam" d="M211.5 212 L428.5 212"/>
-<path class="f-stitch" d="M209.5 217 L430.5 217"/>
-<path class="f-seam" d="M238 172 C241 196 245 216 246 238 M402 172 C399 196 395 216 394 238"/>
-<path class="f-seam" d="M165.7 296 L204.6 316.7 M474.3 296 L435.4 316.7"/>
-<path class="f-seam" d="M256 246 Q258 290 256.5 334 L248.6 336 M384 246 Q382 290 383.5 334 L391.4 336"/>
-<g class="f-perf"><circle cx="251.6" cy="252" r="1.25"/><circle cx="251.6" cy="259" r="1.25"/><circle cx="251.6" cy="266" r="1.25"/><circle cx="251.6" cy="273" r="1.25"/><circle cx="251.6" cy="280" r="1.25"/><circle cx="251.6" cy="287" r="1.25"/><circle cx="251.6" cy="294" r="1.25"/><circle cx="251.6" cy="301" r="1.25"/><circle cx="251.6" cy="308" r="1.25"/><circle cx="251.6" cy="315" r="1.25"/><circle cx="251.6" cy="322" r="1.25"/><circle cx="251.6" cy="329" r="1.25"/><circle cx="388.4" cy="252" r="1.25"/><circle cx="388.4" cy="259" r="1.25"/><circle cx="388.4" cy="266" r="1.25"/><circle cx="388.4" cy="273" r="1.25"/><circle cx="388.4" cy="280" r="1.25"/><circle cx="388.4" cy="287" r="1.25"/><circle cx="388.4" cy="294" r="1.25"/><circle cx="388.4" cy="301" r="1.25"/><circle cx="388.4" cy="308" r="1.25"/><circle cx="388.4" cy="315" r="1.25"/><circle cx="388.4" cy="322" r="1.25"/><circle cx="388.4" cy="329" r="1.25"/></g>
-<path class="f-stitch" d="M252.4 464 Q320 470 387.6 464"/>
-<path class="f-stitch" d="M312.5 470 L312.5 228 C312.5 196 321.5 174 326.5 150 L328.5 111"/>
-<path class="f-zip" d="M318 472 L318 228 C318 198 327 176 332 152 L334 110"/>
-<path class="f-zipline" d="M318 472 L318 228 C318 198 327 176 332 152 L334 110"/>
-<rect class="f-garage" x="328.5" y="105" width="11" height="12" rx="2"/>
-<rect class="f-pull" x="331.6" y="118" width="5" height="13" rx="2"/>
-<rect class="f-welt" x="365" y="234" width="6" height="66" rx="1.5"/>
-<path class="f-zip f-zip-sm" d="M368 236 L368 298"/>
-<rect class="f-pull" x="365.8" y="236" width="4.4" height="11" rx="1.6"/>
-<image href="/assets/img/auramed-mark-sm.png" x="337" y="222" width="22" height="19.5"/>
-<rect class="f-pull" x="259.5" y="204" width="6" height="16" rx="1.5"/>
-<path class="f-seam" d="M270 356 L302 414 M370 356 L338 414"/>
-<path class="f-stitch" d="M266.1 358.2 L298.1 416.2 M373.9 358.2 L341.9 416.2"/>
-<path class="f-seam" d="M264.7 358.9 L271.8 355 M296.7 416.9 L303.8 413 M375.3 358.9 L368.2 355 M343.3 416.9 L336.2 413"/>
-<g class="co" data-spot="1" tabindex="0" role="button" aria-label="1: Contoured funnel neck"><line x1="246" y1="63.5" x2="294" y2="132"/><circle class="co-dot" cx="294" cy="132" r="2.6"/><circle class="co-num" cx="238" cy="52" r="13"/><text x="238" y="56.3" text-anchor="middle">1</text></g>
-<g class="co" data-spot="2" tabindex="0" role="button" aria-label="2: Curved offset zip"><line x1="404.4" y1="63.8" x2="326" y2="186"/><circle class="co-dot" cx="326" cy="186" r="2.6"/><circle class="co-num" cx="412" cy="52" r="13"/><text x="412" y="56.3" text-anchor="middle">2</text></g>
-<g class="co" data-spot="12" tabindex="0" role="button" aria-label="12: Chrome emblem"><line x1="583.1" y1="133.4" x2="349" y2="232"/><circle class="co-dot" cx="349" cy="232" r="2.6"/><circle class="co-num" cx="596" cy="128" r="13"/><text x="596" y="132.3" text-anchor="middle">12</text></g>
-<g class="co" data-spot="6" tabindex="0" role="button" aria-label="6: Chest utility dock"><line x1="582.5" y1="209.8" x2="368" y2="270"/><circle class="co-dot" cx="368" cy="270" r="2.6"/><circle class="co-num" cx="596" cy="206" r="13"/><text x="596" y="210.3" text-anchor="middle">6</text></g>
-<g class="co" data-spot="10" tabindex="0" role="button" aria-label="10: Perforated underarm gusset"><line x1="467.7" y1="542.7" x2="389" y2="300"/><circle class="co-dot" cx="389" cy="300" r="2.6"/><circle class="co-num" cx="472" cy="556" r="13"/><text x="472" y="560.3" text-anchor="middle">10</text></g>
-<g class="co" data-spot="3" tabindex="0" role="button" aria-label="3: Shell B yoke"><line x1="53.4" y1="122.1" x2="272" y2="190"/><circle class="co-dot" cx="272" cy="190" r="2.6"/><circle class="co-num" cx="40" cy="118" r="13"/><text x="40" y="122.3" text-anchor="middle">3</text></g>
-<g class="co" data-spot="7" tabindex="0" role="button" aria-label="7: Badge anchor"><line x1="53.9" y1="187.8" x2="262" y2="214"/><circle class="co-dot" cx="262" cy="214" r="2.6"/><circle class="co-num" cx="40" cy="186" r="13"/><text x="40" y="190.3" text-anchor="middle">7</text></g>
-<g class="co" data-spot="4" tabindex="0" role="button" aria-label="4: Shell B forearm panel"><line x1="52" y1="279.2" x2="150" y2="338"/><circle class="co-dot" cx="150" cy="338" r="2.6"/><circle class="co-num" cx="40" cy="272" r="13"/><text x="40" y="276.3" text-anchor="middle">4</text></g>
-<g class="co" data-spot="5" tabindex="0" role="button" aria-label="5: 10 cm compression cuff"><line x1="52.7" y1="381.9" x2="118" y2="412"/><circle class="co-dot" cx="118" cy="412" r="2.6"/><circle class="co-num" cx="40" cy="376" r="13"/><text x="40" y="380.3" text-anchor="middle">5</text></g>
-<g class="co" data-spot="8" tabindex="0" role="button" aria-label="8: 30-degree hip pockets"><line x1="159.3" y1="523.6" x2="284" y2="384"/><circle class="co-dot" cx="284" cy="384" r="2.6"/><circle class="co-num" cx="150" cy="534" r="13"/><text x="150" y="538.3" text-anchor="middle">8</text></g>
-<g class="co" data-spot="11" tabindex="0" role="button" aria-label="11: Drop-tail hem"><line x1="377.5" y1="536.9" x2="330" y2="475"/><circle class="co-dot" cx="330" cy="475" r="2.6"/><circle class="co-num" cx="386" cy="548" r="13"/><text x="386" y="552.3" text-anchor="middle">11</text></g>
+          <div class="flat-toggle" role="tablist" aria-label="Choose view">
+            <button type="button" role="tab" data-view="front" aria-selected="true">Front</button>
+            <button type="button" role="tab" data-view="back" aria-selected="false">Back</button>
+          </div>
+          <div class="flats" id="flats" data-view="front">
+            <figure class="flat flat-front">
+              <svg viewBox="0 0 640 560" role="group" aria-label="Front technical flat of the SilverCore Full-Zip Jacket with numbered callouts">
+<path class="f-body" d="M283 100 Q320 88 357 100 L365 148 Q396 154 426 166 Q485.3 265.7 532 369 L544.4 398.7 L510.7 416.5 L493 390 L427 228 L429 430 Q320 436 211 430 L213 228 L147 390 L129.3 416.5 L95.6 398.7 L108 369 Q154.7 265.7 214 166 Q244 154 275 148 Z"/>
+<path class="f-panel" d="M275 148 Q244 154 214 166 Q200.4 188.9 187.4 212 L452.6 212 Q439.6 188.9 426 166 Q396 154 365 148 Q320 158 275 148 Z"/>
+<path class="f-panel" d="M147.9 286 L182.1 303.9 L147 390 L108 369 Q126.9 327.2 147.9 286 Z"/>
+<path class="f-panel" d="M492.1 286 L457.9 303.9 L493 390 L532 369 Q513.1 327.2 492.1 286 Z"/>
+<path class="f-cuff" d="M108 369 L147 390 L129.3 416.5 L95.6 398.7 Z"/>
+<path class="f-cuff" d="M532 369 L493 390 L510.7 416.5 L544.4 398.7 Z"/>
+<path class="f-rib" d="M112.3 371.3 L99.3 400.7 M116.7 373.7 L103.1 402.7 M121 376 L106.8 404.6 M125.3 378.3 L110.6 406.6 M129.7 380.7 L114.3 408.6 M134 383 L118.1 410.6 M138.3 385.3 L121.8 412.5 M142.7 387.7 L125.6 414.5 M527.7 371.3 L540.7 400.7 M523.3 373.7 L536.9 402.7 M519 376 L533.2 404.6 M514.7 378.3 L529.4 406.6 M510.3 380.7 L525.7 408.6 M506 383 L521.9 410.6 M501.7 385.3 L518.2 412.5 M497.3 387.7 L514.4 414.5"/>
+<path class="f-inside" d="M283 100 Q320 88 357 100 Q320 112 283 100 Z"/>
+<path class="f-seam" d="M275 148 Q320 158 365 148"/>
+<path class="f-stitch" d="M278 142 Q320 151 362 142"/>
+<path class="f-seam" d="M187.4 212 L452.6 212"/>
+<path class="f-stitch" d="M185.4 217 L454.6 217"/>
+<path class="f-seam" d="M216 168 C219 188 216 210 213 228 M424 168 C421 188 424 210 427 228"/>
+<path class="f-seam" d="M147.9 286 L182.1 303.9 M492.1 286 L457.9 303.9"/>
+<path class="f-seam" d="M222 236 Q224 272 222.5 308 L212.6 310 M418 236 Q416 272 417.5 308 L427.4 310"/>
+<g class="f-perf"><circle cx="217.3" cy="242" r="1.25"/><circle cx="217.3" cy="249" r="1.25"/><circle cx="217.3" cy="256" r="1.25"/><circle cx="217.3" cy="263" r="1.25"/><circle cx="217.3" cy="270" r="1.25"/><circle cx="217.3" cy="277" r="1.25"/><circle cx="217.3" cy="284" r="1.25"/><circle cx="217.3" cy="291" r="1.25"/><circle cx="217.3" cy="298" r="1.25"/><circle cx="217.3" cy="305" r="1.25"/><circle cx="422.7" cy="242" r="1.25"/><circle cx="422.7" cy="249" r="1.25"/><circle cx="422.7" cy="256" r="1.25"/><circle cx="422.7" cy="263" r="1.25"/><circle cx="422.7" cy="270" r="1.25"/><circle cx="422.7" cy="277" r="1.25"/><circle cx="422.7" cy="284" r="1.25"/><circle cx="422.7" cy="291" r="1.25"/><circle cx="422.7" cy="298" r="1.25"/><circle cx="422.7" cy="305" r="1.25"/></g>
+<path class="f-stitch" d="M211.3 424 Q320 430 428.7 424"/>
+<path class="f-stitch" d="M312.5 430 L312.5 222 C312.5 192 322.5 168 328.5 144 L331.5 107"/>
+<path class="f-zip" d="M318 432 L318 222 C318 194 328 170 334 146 L337 106"/>
+<path class="f-zipline" d="M318 432 L318 222 C318 194 328 170 334 146 L337 106"/>
+<rect class="f-garage" x="332" y="100" width="11" height="12" rx="2"/>
+<rect class="f-pull" x="335" y="113" width="5" height="13" rx="2"/>
+<rect class="f-welt" x="371" y="226" width="6" height="64" rx="1.5"/>
+<path class="f-zip f-zip-sm" d="M374 228 L374 288"/>
+<rect class="f-pull" x="371.8" y="228" width="4.4" height="11" rx="1.6"/>
+<image href="/assets/img/auramed-mark-sm.png" x="343" y="212" width="22" height="19.5"/>
+<rect class="f-pull" x="257" y="204" width="6" height="16" rx="1.5"/>
+<path class="f-seam" d="M250 318 L281 372 M390 318 L359 372"/>
+<path class="f-stitch" d="M246.1 320.2 L277.1 374.2 M393.9 320.2 L362.9 374.2"/>
+<path class="f-seam" d="M244.8 321 L251.7 317 M275.8 375 L282.7 371 M395.2 321 L388.3 317 M364.2 375 L357.3 371"/>
+<g class="co" data-spot="1" tabindex="0" role="button" aria-label="1: Contoured funnel neck"><line x1="243.7" y1="55.7" x2="287" y2="122"/><circle class="co-dot" cx="287" cy="122" r="2.6"/><circle class="co-num" cx="236" cy="44" r="13"/><text x="236" y="48.3" text-anchor="middle">1</text></g>
+<g class="co" data-spot="2" tabindex="0" role="button" aria-label="2: Curved offset zip"><line x1="403.1" y1="56.2" x2="327" y2="190"/><circle class="co-dot" cx="327" cy="190" r="2.6"/><circle class="co-num" cx="410" cy="44" r="13"/><text x="410" y="48.3" text-anchor="middle">2</text></g>
+<g class="co" data-spot="12" tabindex="0" role="button" aria-label="12: Chrome emblem"><line x1="585.2" y1="117.8" x2="354" y2="222"/><circle class="co-dot" cx="354" cy="222" r="2.6"/><circle class="co-num" cx="598" cy="112" r="13"/><text x="598" y="116.3" text-anchor="middle">12</text></g>
+<g class="co" data-spot="6" tabindex="0" role="button" aria-label="6: Chest utility dock"><line x1="584.6" y1="194.1" x2="374" y2="258"/><circle class="co-dot" cx="374" cy="258" r="2.6"/><circle class="co-num" cx="598" cy="190" r="13"/><text x="598" y="194.3" text-anchor="middle">6</text></g>
+<g class="co" data-spot="10" tabindex="0" role="button" aria-label="10: Perforated underarm gusset"><line x1="482.2" y1="494.5" x2="422" y2="280"/><circle class="co-dot" cx="422" cy="280" r="2.6"/><circle class="co-num" cx="486" cy="508" r="13"/><text x="486" y="512.3" text-anchor="middle">10</text></g>
+<g class="co" data-spot="3" tabindex="0" role="button" aria-label="3: Shell B yoke"><line x1="53.1" y1="108.9" x2="262" y2="186"/><circle class="co-dot" cx="262" cy="186" r="2.6"/><circle class="co-num" cx="40" cy="104" r="13"/><text x="40" y="108.3" text-anchor="middle">3</text></g>
+<g class="co" data-spot="7" tabindex="0" role="button" aria-label="7: Badge anchor"><line x1="53.8" y1="174.5" x2="260" y2="212"/><circle class="co-dot" cx="260" cy="212" r="2.6"/><circle class="co-num" cx="40" cy="172" r="13"/><text x="40" y="176.3" text-anchor="middle">7</text></g>
+<g class="co" data-spot="4" tabindex="0" role="button" aria-label="4: Shell B forearm panel"><line x1="51.2" y1="258.4" x2="130" y2="318"/><circle class="co-dot" cx="130" cy="318" r="2.6"/><circle class="co-num" cx="40" cy="250" r="13"/><text x="40" y="254.3" text-anchor="middle">4</text></g>
+<g class="co" data-spot="5" tabindex="0" role="button" aria-label="5: 10 cm compression cuff"><line x1="52.5" y1="362.4" x2="110" y2="392"/><circle class="co-dot" cx="110" cy="392" r="2.6"/><circle class="co-num" cx="40" cy="356" r="13"/><text x="40" y="360.3" text-anchor="middle">5</text></g>
+<g class="co" data-spot="8" tabindex="0" role="button" aria-label="8: 30-degree hip pockets"><line x1="158.4" y1="488.8" x2="266" y2="345"/><circle class="co-dot" cx="266" cy="345" r="2.6"/><circle class="co-num" cx="150" cy="500" r="13"/><text x="150" y="504.3" text-anchor="middle">8</text></g>
+<g class="co" data-spot="11" tabindex="0" role="button" aria-label="11: Drop-tail hem"><line x1="372.2" y1="496.4" x2="330" y2="434"/><circle class="co-dot" cx="330" cy="434" r="2.6"/><circle class="co-num" cx="380" cy="508" r="13"/><text x="380" y="512.3" text-anchor="middle">11</text></g>
               </svg>
               <figcaption>FRONT</figcaption>
             </figure>
-            <figure class="flat">
-              <svg viewBox="0 0 640 580" role="group" aria-label="Back technical flat of the SilverCore Full-Zip Jacket with numbered callouts">
-<path class="f-body" d="M292 100 L348 100 L354 156 Q380 160 404 170 Q467.3 276.2 520 388 L533.4 419.4 L501.6 435.6 L483 407 L394 238 L388 470 C361 512 279 512 252 470 L246 238 L157 407 L138.4 435.6 L106.6 419.4 L120 388 Q172.7 276.2 236 170 Q260 160 286 156 Z"/>
-<path class="f-panel" d="M286 156 Q260 160 236 170 Q223.5 190.9 211.5 212 Q320 258 428.5 212 Q416.5 190.9 404 170 Q380 160 354 156 Q320 150 286 156 Z"/>
-<path class="f-panel" d="M165.7 296 L204.6 316.7 L157 407 L120 388 Q141.9 341.5 165.7 296 Z"/>
-<path class="f-panel" d="M474.3 296 L435.4 316.7 L483 407 L520 388 Q498.1 341.5 474.3 296 Z"/>
-<path class="f-cuff" d="M120 388 L157 407 L138.4 435.6 L106.6 419.4 Z"/>
-<path class="f-cuff" d="M520 388 L483 407 L501.6 435.6 L533.4 419.4 Z"/>
-<path class="f-rib" d="M124.1 390.1 L110.1 421.2 M128.2 392.2 L113.7 423 M132.3 394.3 L117.2 424.8 M136.4 396.4 L120.7 426.6 M140.6 398.6 L124.3 428.4 M144.7 400.7 L127.8 430.2 M148.8 402.8 L131.3 432 M152.9 404.9 L134.9 433.8 M515.9 390.1 L529.9 421.2 M511.8 392.2 L526.3 423 M507.7 394.3 L522.8 424.8 M503.6 396.4 L519.3 426.6 M499.4 398.6 L515.7 428.4 M495.3 400.7 L512.2 430.2 M491.2 402.8 L508.7 432 M487.1 404.9 L505.1 433.8"/>
-<path class="f-seam" d="M286 156 Q320 150 354 156"/>
-<path class="f-stitch" d="M292.4 106 L347.6 106"/>
-<path class="f-seam" d="M211.5 212 Q320 258 428.5 212"/>
-<path class="f-stitch" d="M210 217 Q320 268 430 217"/>
-<path class="f-seam" d="M238 172 C241 196 245 216 246 238 M402 172 C399 196 395 216 394 238"/>
-<path class="f-seam" d="M165.7 296 L204.6 316.7 M474.3 296 L435.4 316.7"/>
-<path class="f-stitch" d="M252.4 464 C279 505 361 505 387.6 464"/>
-<rect class="f-guard" x="300" y="115" width="40" height="26" rx="3"/>
-<rect class="f-stitch" x="303" y="118" width="34" height="20" rx="2"/>
-<path class="f-hidden" d="M313 150 Q313 168 320 168 Q327 168 327 150"/>
-<rect class="f-tab" x="241" y="436" width="11" height="20" rx="2"/>
-<g class="co" data-spot="14" tabindex="0" role="button" aria-label="14: Hanger loop"><line x1="245.5" y1="51.8" x2="318" y2="166"/><circle class="co-dot" cx="318" cy="166" r="2.6"/><circle class="co-num" cx="238" cy="40" r="13"/><text x="238" y="44.3" text-anchor="middle">14</text></g>
-<g class="co" data-spot="9" tabindex="0" role="button" aria-label="9: Stethoscope nape guard"><line x1="393.3" y1="51" x2="332" y2="128"/><circle class="co-dot" cx="332" cy="128" r="2.6"/><circle class="co-num" cx="402" cy="40" r="13"/><text x="402" y="44.3" text-anchor="middle">9</text></g>
-<g class="co" data-spot="3" tabindex="0" role="button" aria-label="3: Shell B yoke"><line x1="53.2" y1="122.5" x2="268" y2="196"/><circle class="co-dot" cx="268" cy="196" r="2.6"/><circle class="co-num" cx="40" cy="118" r="13"/><text x="40" y="122.3" text-anchor="middle">3</text></g>
-<g class="co" data-spot="4" tabindex="0" role="button" aria-label="4: Shell B forearm panel"><line x1="588" y1="279.2" x2="490" y2="338"/><circle class="co-dot" cx="490" cy="338" r="2.6"/><circle class="co-num" cx="600" cy="272" r="13"/><text x="600" y="276.3" text-anchor="middle">4</text></g>
-<g class="co" data-spot="13" tabindex="0" role="button" aria-label="13: Lot tab"><line x1="53.9" y1="468.4" x2="243" y2="446"/><circle class="co-dot" cx="243" cy="446" r="2.6"/><circle class="co-num" cx="40" cy="470" r="13"/><text x="40" y="474.3" text-anchor="middle">13</text></g>
-<g class="co" data-spot="11" tabindex="0" role="button" aria-label="11: Drop-tail hem"><line x1="376.6" y1="545.6" x2="338" y2="503"/><circle class="co-dot" cx="338" cy="503" r="2.6"/><circle class="co-num" cx="386" cy="556" r="13"/><text x="386" y="560.3" text-anchor="middle">11</text></g>
+            <figure class="flat flat-back">
+              <svg viewBox="0 0 640 560" role="group" aria-label="Back technical flat of the SilverCore Full-Zip Jacket with numbered callouts">
+<path class="f-body" d="M283 96 L357 96 L365 148 Q396 154 426 166 Q485.3 265.7 532 369 L544.4 398.7 L510.7 416.5 L493 390 L427 228 L429 430 C372 468 268 468 211 430 L213 228 L147 390 L129.3 416.5 L95.6 398.7 L108 369 Q154.7 265.7 214 166 Q244 154 275 148 Z"/>
+<path class="f-panel" d="M275 148 Q244 154 214 166 Q200.4 188.9 187.4 212 Q320 256 452.6 212 Q439.6 188.9 426 166 Q396 154 365 148 Q320 142 275 148 Z"/>
+<path class="f-panel" d="M147.9 286 L182.1 303.9 L147 390 L108 369 Q126.9 327.2 147.9 286 Z"/>
+<path class="f-panel" d="M492.1 286 L457.9 303.9 L493 390 L532 369 Q513.1 327.2 492.1 286 Z"/>
+<path class="f-cuff" d="M108 369 L147 390 L129.3 416.5 L95.6 398.7 Z"/>
+<path class="f-cuff" d="M532 369 L493 390 L510.7 416.5 L544.4 398.7 Z"/>
+<path class="f-rib" d="M112.3 371.3 L99.3 400.7 M116.7 373.7 L103.1 402.7 M121 376 L106.8 404.6 M125.3 378.3 L110.6 406.6 M129.7 380.7 L114.3 408.6 M134 383 L118.1 410.6 M138.3 385.3 L121.8 412.5 M142.7 387.7 L125.6 414.5 M527.7 371.3 L540.7 400.7 M523.3 373.7 L536.9 402.7 M519 376 L533.2 404.6 M514.7 378.3 L529.4 406.6 M510.3 380.7 L525.7 408.6 M506 383 L521.9 410.6 M501.7 385.3 L518.2 412.5 M497.3 387.7 L514.4 414.5"/>
+<path class="f-seam" d="M275 148 Q320 150 365 148"/>
+<path class="f-stitch" d="M283.4 102 L356.6 102"/>
+<path class="f-seam" d="M187.4 212 Q320 256 452.6 212"/>
+<path class="f-stitch" d="M185.9 217 Q320 266 454.1 217"/>
+<path class="f-seam" d="M216 168 C219 188 216 210 213 228 M424 168 C421 188 424 210 427 228"/>
+<path class="f-seam" d="M147.9 286 L182.1 303.9 M492.1 286 L457.9 303.9"/>
+<path class="f-stitch" d="M211.3 424 C268 461 372 461 428.7 424"/>
+<rect class="f-guard" x="301" y="108" width="38" height="24" rx="3"/>
+<rect class="f-stitch" x="304" y="111" width="32" height="18" rx="2"/>
+<path class="f-hidden" d="M313 142 Q313 158 320 158 Q327 158 327 142"/>
+<rect class="f-tab" x="201" y="394" width="11" height="20" rx="2"/>
+<g class="co" data-spot="14" tabindex="0" role="button" aria-label="14: Hanger loop"><line x1="243.8" y1="45.6" x2="318" y2="156"/><circle class="co-dot" cx="318" cy="156" r="2.6"/><circle class="co-num" cx="236" cy="34" r="13"/><text x="236" y="38.3" text-anchor="middle">14</text></g>
+<g class="co" data-spot="9" tabindex="0" role="button" aria-label="9: Stethoscope nape guard"><line x1="394.9" y1="44.7" x2="331" y2="120"/><circle class="co-dot" cx="331" cy="120" r="2.6"/><circle class="co-num" cx="404" cy="34" r="13"/><text x="404" y="38.3" text-anchor="middle">9</text></g>
+<g class="co" data-spot="3" tabindex="0" role="button" aria-label="3: Shell B yoke"><line x1="52.9" y1="109.4" x2="262" y2="196"/><circle class="co-dot" cx="262" cy="196" r="2.6"/><circle class="co-num" cx="40" cy="104" r="13"/><text x="40" y="108.3" text-anchor="middle">3</text></g>
+<g class="co" data-spot="4" tabindex="0" role="button" aria-label="4: Shell B forearm panel"><line x1="588.8" y1="258.4" x2="510" y2="318"/><circle class="co-dot" cx="510" cy="318" r="2.6"/><circle class="co-num" cx="600" cy="250" r="13"/><text x="600" y="254.3" text-anchor="middle">4</text></g>
+<g class="co" data-spot="13" tabindex="0" role="button" aria-label="13: Lot tab"><line x1="53.8" y1="427.8" x2="203" y2="404"/><circle class="co-dot" cx="203" cy="404" r="2.6"/><circle class="co-num" cx="40" cy="430" r="13"/><text x="40" y="434.3" text-anchor="middle">13</text></g>
+<g class="co" data-spot="11" tabindex="0" role="button" aria-label="11: Drop-tail hem"><line x1="377.2" y1="509.1" x2="338" y2="461"/><circle class="co-dot" cx="338" cy="461" r="2.6"/><circle class="co-num" cx="386" cy="520" r="13"/><text x="386" y="524.3" text-anchor="middle">11</text></g>
               </svg>
               <figcaption>BACK</figcaption>
             </figure>
+          </div>
+
+          <div class="flat-caption" id="flat-caption" aria-live="polite">
+            <span class="n" aria-hidden="true">?</span>
+            <div><h3>Tap any number</h3><p class="spec">14 details, front and back</p><p>Each one traces back to something that goes wrong on a real shift.</p></div>
           </div>
 
           <ol class="spec-list">
@@ -726,6 +735,7 @@
         </div>
       </div>
       <div class="footer-legal">
+        <p class="footer-lot" aria-hidden="true"><span>LOT 26-001</span><span>STYLE AM-SC-001</span><span>MFG PROTO</span><span>EXP N/A</span></p>
         <p>© <span data-year>2026</span> Aura Medical Solutions Inc., 517 Richmond St E, Toronto, ON M5A 2W7.</p>
         <p>SilverCore is apparel, not personal protective equipment or a medical device. Its antimicrobial treatment protects the fabric and does not replace hand hygiene, PPE or infection prevention and control practices.</p>
         <p>SilverCore™ is a trademark of Aura Medical Solutions Inc. IONIC+™ is a trademark of Noble Biomaterials, Inc. OEKO-TEX® is a registered trademark of OEKO-TEX Service GmbH.</p>

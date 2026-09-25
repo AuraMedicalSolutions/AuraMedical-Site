@@ -22,58 +22,131 @@ const KIT_FORM_ID = "9959315";
     window.addEventListener("scroll", onScroll, { passive: true });
   }
   if (nav && toggle) {
-    toggle.addEventListener("click", () => {
-      const open = nav.classList.toggle("is-open");
+    const setMenu = (open) => {
+      nav.classList.toggle("is-open", open);
+      document.body.classList.toggle("menu-open", open);
       toggle.setAttribute("aria-expanded", String(open));
-    });
-    nav.querySelectorAll(".nav-links a, .nav-cta").forEach((a) =>
-      a.addEventListener("click", () => {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-      })
-    );
+    };
+    toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
+    nav.querySelectorAll(".nav-links a, .nav-cta").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); } });
+    window.matchMedia("(min-width: 921px)").addEventListener("change", (m) => { if (m.matches) setMenu(false); });
   }
 
-  /* Fibre diagram: wash-count slider */
+  /* Fibre diagram: wash-count slider.
+     Surface-finish dots wear away through ~60 washes (most by ~40);
+     extruded silver stays put for the whole range. */
   const range = document.getElementById("wash-range");
   const out = document.getElementById("wash-out");
   const surface = Array.from(document.querySelectorAll(".ag-surface"));
+  const meterText = document.getElementById("meter-coated");
+  const meterBar = document.getElementById("meter-coated-bar");
   if (range && out) {
+    const n = surface.length;
+    surface.forEach((dot, i) => {
+      const order = ((i * 37) % n) / n;              // spread around the ring, not sequential
+      dot.dataset.life = String(Math.round(3 + 57 * Math.pow(order, 0.75)));
+    });
     const update = () => {
       const v = Number(range.value);
       out.textContent = v === 1 ? "1 wash" : `${v} washes`;
       range.style.setProperty("--fill", `${(v / Number(range.max)) * 100}%`);
-      surface.forEach((dot) => dot.classList.toggle("is-gone", v >= Number(dot.dataset.life)));
+      let left = 0;
+      surface.forEach((dot) => {
+        const gone = v >= Number(dot.dataset.life);
+        dot.classList.toggle("is-gone", gone);
+        if (!gone) left++;
+      });
+      const pct = n ? Math.round((left / n) * 100) : 100;
+      if (meterText) meterText.textContent = `${pct}% silver left`;
+      if (meterBar) meterBar.style.width = `${pct}%`;
+      if (meterText) meterText.parentElement.classList.toggle("is-empty", pct <= 10);
     };
     range.addEventListener("input", update);
     update();
   }
 
-  /* Tech sheet: link numbered callouts (front + back) with the spec list */
+  /* Tech sheet: numbered callouts (front + back), spec list and live caption */
   const flats = document.getElementById("flats");
   const callouts = Array.from(document.querySelectorAll(".co"));
   const specs = Array.from(document.querySelectorAll(".spec-list li"));
-  const setActive = (id) => {
-    if (flats) flats.classList.toggle("has-active", Boolean(id));
-    callouts.forEach((c) => c.classList.toggle("is-active", c.dataset.spot === id));
-    specs.forEach((s) => s.classList.toggle("is-active", s.dataset.spot === id));
+  const caption = document.getElementById("flat-caption");
+  const tabs = Array.from(document.querySelectorAll(".flat-toggle button"));
+  const phone = window.matchMedia("(max-width: 920px)");
+  const canHover = window.matchMedia("(hover: hover)").matches;
+  let pinned = null;
+
+  const captionDefault = caption ? caption.innerHTML : "";
+  if (caption && canHover) {
+    caption.querySelector("h3").textContent = "Hover or click any number";
+  }
+
+  const setView = (view) => {
+    if (!flats) return;
+    flats.dataset.view = view;
+    tabs.forEach((t) => t.setAttribute("aria-selected", String(t.dataset.view === view)));
   };
-  [...callouts, ...specs].forEach((el) => {
-    el.addEventListener("mouseenter", () => setActive(el.dataset.spot));
-    el.addEventListener("mouseleave", () => setActive(null));
-    el.addEventListener("focus", () => setActive(el.dataset.spot));
-    el.addEventListener("blur", () => setActive(null));
-  });
+  tabs.forEach((t) => t.addEventListener("click", () => setView(t.dataset.view)));
+
+  const viewFor = (id) => {
+    const inFront = callouts.some((c) => c.dataset.spot === id && c.closest(".flat-front"));
+    return inFront ? "front" : "back";
+  };
+
+  const showCaption = (id) => {
+    if (!caption) return;
+    const item = specs.find((s) => s.dataset.spot === id);
+    if (!item) {
+      caption.innerHTML = captionDefault;
+      if (canHover) caption.querySelector("h3").textContent = "Hover or click any number";
+      caption.classList.remove("is-live");
+      return;
+    }
+    const name = item.querySelector("h3").textContent;
+    const spec = item.querySelector(".spec");
+    const desc = item.querySelector("p").textContent;
+    caption.innerHTML = `<span class="n" aria-hidden="true">${id}</span><div><h3>${name}</h3>${spec ? `<p class="spec">${spec.textContent}</p>` : ""}<p>${desc}</p></div>`;
+    caption.classList.add("is-live");
+  };
+
+  const paint = (id) => {
+    if (flats) flats.classList.toggle("has-active", Boolean(id));
+    callouts.forEach((c) => {
+      c.classList.toggle("is-active", c.dataset.spot === id);
+      c.classList.toggle("is-pinned", c.dataset.spot === pinned);
+    });
+    specs.forEach((s) => s.classList.toggle("is-active", s.dataset.spot === id));
+    showCaption(id);
+  };
+
+  const select = (id, { fromList = false } = {}) => {
+    pinned = pinned === id && !fromList ? null : id;
+    if (pinned && phone.matches) setView(viewFor(pinned));
+    paint(pinned);
+    if (fromList && phone.matches && flats) {
+      const anchor = document.querySelector(".flat-toggle") || flats;
+      const navH = (document.querySelector(".nav") || {}).offsetHeight || 0;
+      const y = anchor.getBoundingClientRect().top + window.scrollY - navH - 12;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   callouts.forEach((c) => {
-    const go = () => {
-      setActive(c.dataset.spot);
-      const target = specs.find((s) => s.dataset.spot === c.dataset.spot);
-      if (target && window.matchMedia("(max-width: 920px)").matches) {
-        target.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    };
-    c.addEventListener("click", go);
-    c.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    c.addEventListener("click", () => select(c.dataset.spot));
+    c.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(c.dataset.spot); } });
+    c.addEventListener("focus", () => paint(c.dataset.spot));
+    c.addEventListener("blur", () => paint(pinned));
+    if (canHover) {
+      c.addEventListener("mouseenter", () => paint(c.dataset.spot));
+      c.addEventListener("mouseleave", () => paint(pinned));
+    }
+  });
+  specs.forEach((s) => {
+    s.addEventListener("click", () => select(s.dataset.spot, { fromList: true }));
+    if (canHover) {
+      s.addEventListener("mouseenter", () => paint(s.dataset.spot));
+      s.addEventListener("mouseleave", () => paint(pinned));
+    }
   });
 
   /* Early-access form */
